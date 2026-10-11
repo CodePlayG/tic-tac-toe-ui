@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+* { box-sizing: border-box; }
+html { min-height: 100%; background: #f5f0e9; }
+body { min-width: 320px; min-height: 100%; margin: 0; background: radial-gradient(circle at 13% 8%, #fffdf8 0, #f5f0e9 43%, #eee4da 100%); color: #2a211b; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+button:focus-visible { outline: 3px solid #d88963; outline-offset: 3px; }
+
