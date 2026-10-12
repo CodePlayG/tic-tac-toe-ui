@@ -108,5 +108,27 @@ describe('App', () => {
     expect(page.querySelectorAll('.table-row')).toHaveLength(5);
     expect(page.textContent).toContain('Player X wins!');
     expect(page.textContent).toContain('Row 1, Column 3');
+    expect(page.querySelector<HTMLButtonElement>('.game-actions .secondary-button')?.disabled).toBe(true);
+  });
+
+  it('disables undo when the backend reports a draw', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    http.expectOne('/api/games').flush(state({
+      board: ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'],
+      status: 'draw',
+      moves: [
+        { player: 'X', position: 0 }, { player: 'O', position: 1 },
+        { player: 'X', position: 2 }, { player: 'O', position: 4 },
+        { player: 'X', position: 3 }, { player: 'O', position: 5 },
+        { player: 'X', position: 7 }, { player: 'O', position: 6 },
+        { player: 'X', position: 8 },
+      ],
+    }));
+    fixture.detectChanges();
+
+    const undoButton = (fixture.nativeElement as HTMLElement)
+      .querySelector<HTMLButtonElement>('.game-actions .secondary-button');
+    expect(undoButton?.disabled).toBe(true);
   });
 });

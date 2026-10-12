@@ -16,7 +16,7 @@
         <button type="button" class="cell" role="gridcell" [disabled]="!canPlay($index)" [attr.aria-label]="cellLabel($index)" [ngClass]="{ x: cell === 'X', o: cell === 'O', winning: winningCells().includes($index) }" (click)="makeMove($index)">{{ cell }}</button>
       }
     </div>
-    <div class="game-actions"><button type="button" class="secondary-button" [disabled]="moveHistory().length === 0" (click)="undoLastMove()">↶ Undo last move</button><button type="button" class="primary-button" (click)="resetGame()">↻ Reset game</button></div>
+    <div class="game-actions"><button type="button" class="secondary-button" [disabled]="moveHistory().length === 0 || gameStatus() !== 'playing'" (click)="undoLastMove()">↶ Undo last move</button><button type="button" class="primary-button" (click)="resetGame()">↻ Reset game</button></div>
   </section>
   <aside class="side-panel">
     <section class="score-card" aria-labelledby="score-title">
