@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.24.
 
+## UI architecture
+
+See [UI Architecture and Flow](docs/ui-architecture.md) for the UI structure, state ownership, API contract, and user interaction flows.
+
 ## Development server
 
 To start a local development server, run:
